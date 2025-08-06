@@ -1,0 +1,168 @@
+1.Build an online store using OOPS principles where users can browse items,add items to the cart, and make purches.
+
+2.Implement product categories,and inheritance between Electronics,Clothing,and other categories.
+
+3.Include constructors to initialize objects and overloaded methods for different payents types.
+
+=============================================
+Understood. Let’s outline **the approach first** so the structure is clear before coding:
+
+---
+
+### **Approach for Online Store (OOP-Focused)**
+
+#### **1. Core Classes**
+
+1. **Product (Base Class)**
+
+   * Fields: `id`, `name`, `price`
+   * Methods: `toString()`, `getDetails()`
+   * Used for polymorphism when handling multiple product types.
+
+2. **Electronics, Clothing, etc. (Subclasses)**
+
+   * Inherit from `Product`
+   * Add category-specific fields (e.g., `brand` for Electronics, `size` for Clothing)
+   * Override `getDetails()` to display extra info.
+
+---
+
+#### **2. User and Cart**
+
+1. **User**
+
+   * Fields: `name`, `cart`
+   * Methods: `addToCart(Product)`, `viewCart()`, `checkout()`.
+
+2. **Cart**
+
+   * Holds a list of `Product`.
+   * Methods: `addProduct()`, `removeProduct()`, `calculateTotal()`.
+
+---
+
+#### **3. Payment (Overloading)**
+
+* Overload `checkout()` to handle:
+
+  * `checkout(String creditCardNumber)`
+  * `checkout(String upiId, String pin)`
+  * `checkout(CashOnDelivery)` (simply a flag).
+
+---
+
+#### **4. Store**
+
+* Holds a **list of products**.
+* Methods:
+
+  * `displayProducts()`
+  * `searchProduct(String name)`
+  * `browseByCategory(Class<?> type)`.
+
+---
+
+#### **5. Console Flow**
+
+1. Display product categories.
+2. Let the user browse, search, and add to cart.
+3. Perform checkout with chosen payment method.
+
+---
+
+### **OOP Concepts Applied**
+
+1. **Inheritance** → Product → Electronics / Clothing.
+2. **Polymorphism** → Treat all products uniformly when added to the cart.
+3. **Encapsulation** → Private fields + getters/setters.
+4. **Abstraction** → Interfaces if needed (e.g., `Payable` for payment methods).
+5. **Constructors** → Initialize products and users.
+6. **Method Overloading** → Multiple payment options.
+7. **`toString()` Override** → Display details clearly.
+8. **`final` and `static`** → Constants (e.g., store name, tax rate).
+9. **`super`** → Call parent constructors.
+
+========================================================================================
+Step 1: Product Hierarchy (OOP Basics)
+We’ll create:
+
+Product (base class)
+
+Electronics and Clothing (subclasses with extra fields)
+
+What This Demonstrates
+Inheritance: Electronics and Clothing extend Product.
+
+Polymorphism: Both override getDetails(), but we call them via Product reference.
+
+Constructors: Parent initialized with super().
+
+toString() override: Clean printing of objects.
+============================================================================================
+Step 2: Cart & User
+Now we’ll add:
+
+Cart – to hold selected products and calculate totals.
+
+User – to represent a shopper who interacts with the cart.
+
+What This Adds
+Encapsulation: Cart manages its own product list privately.
+
+Composition: User has a Cart (not inheritance but “has-a” relationship).
+
+Behavior: Adding/removing products dynamically.
+
+Reusability: Cart logic can work for any user.
+===========================================================================================
+Step 3: Checkout & Payment (Method Overloading)
+We now add:
+
+Checkout logic in User.
+
+Overloaded methods for different payment types:
+
+Credit/Debit card
+
+UPI
+
+Cash on Delivery.
+
+What We Achieved Here
+Method Overloading: Multiple checkout() methods based on payment type.
+
+Encapsulation: processPayment() kept private inside User.
+
+Polymorphism: Product references handle both Electronics & Clothing seamlessly.
+
+Clean Flow: After successful payment, the cart clears.
+
+==============================================================================================
+Step 4: Store with Product Browsing, Search & Dynamic Input
+Now we make the application console-based and interactive:
+
+Store class to hold all products and allow browsing/search.
+
+Scanner for dynamic user input.
+
+User can:
+
+View all products
+
+Search by name
+
+Add to cart
+
+Checkout with chosen payment method
+
+What We Achieved in Step 4
+Dynamic Input: User interacts via console.
+
+Search & Browse: Products can be searched by ID or viewed all at once.
+
+Polymorphism: Same cart handles Electronics and Clothing seamlessly.
+
+Method Overloading: Multiple payment methods handled cleanly.
+
+Encapsulation & Composition: Store manages products, User manages cart.
+
