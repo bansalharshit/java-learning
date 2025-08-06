@@ -2,5 +2,4 @@ Create a Library Management System using OOPS Concepts where a Library Contains 
 
 Implement Features like adding book, Searching Books, Borrowing and Returning Books using encapsulation,inheritance and Polymorphism,Abtraction(Intefaces).
 
-Using all the concepts using in OOPs like super keywords, final , static, Constructor, toString Method if possible. 
-
+Using all the concepts like OOPS, super keywords, final , static, Constructor, toString Method.
