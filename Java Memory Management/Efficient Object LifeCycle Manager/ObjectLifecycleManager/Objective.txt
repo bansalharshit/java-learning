@@ -1,0 +1,82 @@
+Develop a java application that efficiently manages object lifecycle, ensuring that no unnecessary objects remain in memory.
+
+Implement features like automatic resource cleanup and manual memory optimization triggers using System.gc() for educational purposes.
+=======================================================
+Key Features of the Application:->
+
+Create dummy objects that simulate resource usage:->
+
+Track and display memory before and after GC.
+
+Use PhantomReference to show GC eligibility.
+
+Manually nullify and remove references to make them collectible.
+
+Use AutoCloseable resource with try-with-resources to show proper cleanup.
+
+Print memory usage after cleanup.
+
+The Flow of the Project
+==========================>
+Step 1. Create a large object to simulate memory usage
+BigObject bigObject = new BigObject();
+It allocates 10MB, so we can observe memory impact.
+
+Used to demonstrate what happens when an object becomes eligible for garbage collection.
+
+Step 2. Attach a PhantomReference and ReferenceQueue
+
+ReferenceQueue<BigObject> refQueue = new ReferenceQueue<>();
+PhantomReference<BigObject> phantomRef = new PhantomReference<>(bigObject, refQueue);
+PhantomReference	A reference that doesn’t prevent an object from being GC’d. After GC clears the object, it's added to the ReferenceQueue.
+ReferenceQueue<T>	A queue where GC-enqueued PhantomReferences go after their object is collected.
+
+Step 3. Nullify the strong reference
+bigObject = null;
+This step is crucial: it removes the strong reference to the object.
+
+Now, only the PhantomReference is holding a "ghost" handle.
+
+The object is now eligible for garbage collection.
+
+Step 4. Call System.gc()
+System.gc();
+Thread.sleep(2000); // Give GC time to run
+We’re triggering GC manually (not reliable in real apps, but useful here).
+
+We wait a bit because GC is asynchronous.
+
+5. Check ReferenceQueue for GC Notification
+java
+Copy
+Edit
+if (refQueue.poll() != null) {
+    System.out.println("Object has been garbage collected.");
+}
+After GC, Java puts the phantom reference into the queue.
+
+We check that queue to confirm that the object is really gone.
+
+That’s your safe and clean replacement for finalize().
+
+6. Resource Cleanup (Bonus)
+java
+Copy
+Edit
+try (CustomResource resource = new CustomResource()) {
+    resource.doWork();
+}
+Demonstrates AutoCloseable and try-with-resources, which automatically closes resources.
+
+Interviewers love this part because it's idiomatic Java for real resource management (e.g., files, DBs).
+
+💬 Real-World Analogy
+Imagine:
+
+You have a car (object).
+
+You put a sticker on it that says “Notify me when junked” (PhantomReference).
+
+When it’s finally scrapped, someone drops that sticker into your mailbox (ReferenceQueue).
+
+You never get to use the car again — but you know it’s gone.
