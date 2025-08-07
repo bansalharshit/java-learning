@@ -1,0 +1,5 @@
+File Reading with Error Handling:
+
+1. Create a java Application that reads a file from the System.
+2.Use Exception handling to manage cases where the file does not eixt,and handle possible IOExceptions.
+3.Implement a finally block to close the file reader after the file is read or if an exception occurs.
