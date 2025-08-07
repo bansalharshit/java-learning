@@ -1,0 +1,75 @@
+1.Create a tool that monitors heap and stack memory usage in real-time,using java's MemoryMXBean and GarbageCollectorMXBean APIs.
+
+2.The tool should log garbage collection events and display memory consumption trends.
+=======================================================
+
+Heap & Non-Heap Monitoring
+1.getHeapMemoryUsage() tracks live heap usage.
+2.getNonHeapMemoryUsage() tracks stack/metaspace usage.
+
+Garbage Collection Stats
+1. Uses GarbageCollectionMXBean to log GC runs,count,and time spent.
+
+Real-Time Logging
+1.Memory Logged every 3 seconds.(this time you can adjust according to your requirement)
+2.GC stats logged every 10 seconds.(this time you can adjust according to your requirement)
+
+Workload Simulation
+Continuously Allocates memory to trigger GC Events for testing.
+
+Remark-> we can use Java Management Extensions(JMX) to monitor memory in real time.
+
+Actual Use of this Application in real-world
+1.Performance Monitoring tools(like VisualVm or JConsole).
+2.Microservices memory health dashboards.
+3.Detecting Memory Leaks in production.
+
+2. Key Concepts You’re Demonstrating
+Heap Memory
+
+Stores objects created via new.
+
+GC works here to clean unused objects.
+
+Monitored using MemoryMXBean.getHeapMemoryUsage().
+
+Non-Heap Memory
+
+Includes Metaspace (class metadata) and Thread Stack.
+
+Tracked via MemoryMXBean.getNonHeapMemoryUsage().
+
+Garbage Collection (GC) Events
+
+Using GarbageCollectorMXBean to check:
+
+How many times GC ran.
+
+How much time GC took.
+
+Thread Scheduling
+
+Using ScheduledExecutorService to log data periodically.
+
+E) Workload Simulation
+byte[] memoryFiller = new byte[10 * 1024 * 1024]; // Allocate 10MB
+Forces heap growth → GC runs → realistic behavior.
+
+5. How can you detect Memory Leaks using such a tool?
+Clue of memory leaks: Heap usage keeps increasing over time without going down after GC.
+
+Steps:
+
+Track used heap via MemoryMXBean.
+
+Observe GC events via GarbageCollectorMXBean.
+
+If heap doesn’t drop even after multiple GC runs → possible leak.
+
+How to Explain This in an Interview (One-Liner):
+“This tool uses JMX APIs to monitor JVM memory in real-time. It separates Heap and Non-Heap analysis, tracks GC stats, and could be extended to detect leaks or trigger alerts. I used ScheduledExecutorService for periodic logging and MemoryMXBean for granular memory insights.”
+
+
+Question1.Whose Memory Usage Are We Tracking?
+Answer 
+“The tool I built monitors the heap and GC stats of the JVM process it’s running in. It doesn’t track OS-level or cross-process memory. But it can be extended with remote JMX access to monitor external JVMs.”
