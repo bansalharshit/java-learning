@@ -1,0 +1,7 @@
+User Input Validation
+=======================>
+1. Develop a Java Program that validates user input from an online registration form.
+
+2.Use custom exceptions to handle cases such as invalid email format,age restrictions,and mission required fields.
+
+3. Use throw to raise exceptions when invalid data is entered and handle them appropriately in the program.
