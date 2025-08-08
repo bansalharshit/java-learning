@@ -1,0 +1,6 @@
+Array Operations Manager:
+1. Develop a Java Program that allows users to create,sort,and manipulate arrays.
+
+2.The program should allow users to input a list of numbers ans then perform operations like searching for an element,finding the largest and smallest numbers, and sorting the array.
+
+3.Implement error handling for invalid inputs,such a negative array sizes or out-of-bound access.
