@@ -1,0 +1,4 @@
+String Manipulation Tool:
+1. Build a java application that allows users to input a sentence and perform various string operations on it,such as finding its length,extracting substring,searching for specific characters,and replacing words.
+
+2.The Program should handle input errors(such as null or empty strings) and offer a user-friendly interface.
