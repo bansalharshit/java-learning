@@ -1,0 +1,40 @@
+Step-by-Step Design
+Entities Required
+We will create the following classes:
+=================================================================================
+Employee
+
+Attributes: employeeId, firstName, lastName, sex, address, age, salary, contacts, dateOfJoining.
+
+Has-a Department.
+
+Has-a list of Projects (with details like duration and startDate).
+
+Implements Comparable (e.g., natural order by firstName).
+==================================================================================
+Department
+
+Attributes: departmentId, departmentName, departmentLocation.
+
+Has-a list of Projects.
+=================================================================================
+Project
+
+Attributes: projectId, projectName, projectLocation.
+=================================================================================
+EmployeeWorkOn
+
+Represents mapping of an Employee working on a Project with duration and startDate.
+
+Collections to Use
+HashMap<Integer, Employee>
+To store Employee details (with employeeId as the key).
+
+TreeSet<Employee>
+To sort employees (using Comparable and custom Comparator).
+
+HashSet<Project>
+To store unique projects per department.
+
+The Nature of Desire is to be intensive no matter what how much you want to fill it you will not will satiation either
+No Need To Sleep for So Long What is there is to be done now use you intellect
