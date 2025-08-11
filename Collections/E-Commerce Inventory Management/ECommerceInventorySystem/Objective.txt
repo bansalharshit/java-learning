@@ -1,0 +1,91 @@
+1. Develop an e-commerce inventory system where products are managed using the Java Collections Framework.
+
+2.Use a HashMap to associate product names with their quantities, a List to keep track of new product arrivals, and a Set to ensure no duplicate products are added.
+
+3.Implement a features to display products sorted by price or name using Comparator.
+
+Remark:
+1. Why Did the Transaction Happen?
+2. Who Bought or supplied the goods?
+3. What products are involved?
+4. Where are your goods located?
+5. When do they need to be received or delivered?
+
+1. Problem Understanding
+We need to manage an e-commerce store’s product inventory:
+
+Store product details (name, price, quantity, supplier, buyer info, etc.).
+
+Track new arrivals.
+
+Prevent duplicate product entries.
+
+Allow sorting by price or name.
+
+Maintain transaction details:
+
+Why? → Type of transaction (Purchase or Sale)
+
+Who? → Supplier or Customer
+
+What? → Product(s) involved
+
+Where? → Location (Warehouse/Store)
+
+When? → Date of transaction
+
+2. OOP + Collections Plan
+Product class: Represents product details (name, price, location, quantity).
+
+InventoryManager class:
+
+HashMap<String, Product> → Associate product name with Product object (and quantity).
+
+List<Product> → Track new arrivals.
+
+Set<String> → Ensure no duplicate product names.
+
+Transaction class: Stores transaction metadata (why, who, what, where, when).
+
+Sorting:
+
+Implement Comparator<Product> for name and price sorting.
+
+3. Steps to Implement
+Create Product class
+
+Fields: name, price, location, quantity.
+
+Implement toString() for display.
+
+Create Transaction class
+
+Fields: type (purchase/sale), person (supplier/buyer), product, location, date.
+
+Create InventoryManager class
+
+HashMap<String, Product> for main storage.
+
+Set<String> to ensure unique names.
+
+List<Product> to track new arrivals.
+
+Methods:
+
+addProduct(Product p)
+
+displayInventory()
+
+sortByName() / sortByPrice()
+
+Main Class
+
+Menu system to allow user to:
+
+Add product.
+
+View inventory.
+
+Sort inventory.
+
+Record a transaction.
